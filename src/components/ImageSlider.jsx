@@ -38,6 +38,10 @@ const ImageSlider = () => {
     }
   };
 
+  // Ensure that IMAGE_DATA and TAB_IMAGES are synced.
+  // Create an array of images that will be displayed in the slider based on the TAB_IMAGES array.
+  const imagesToShow = TAB_IMAGES.map((tabImage, index) => IMAGE_DATA[index]);
+
   return (
     <div className="container mx-auto px-4">
       <h2 className="text-center mb-10 font-semibold text-4xl text-black">
@@ -46,15 +50,15 @@ const ImageSlider = () => {
 
       <Slider
         ref={sliderRef}
-        className=" mx-auto"
+        className="mx-auto"
         {...settings}
         initialSlide={activeTab}
         afterChange={handleAfterChange}
       >
-        {IMAGE_DATA.map((image, index) => (
+        {imagesToShow.map((image, index) => (
           <div className="sizes-[100vw] mx-auto" key={image.id}>
             <img
-              className="w-full h-[200px]  md:h-[500px] object-cover"
+              className="w-full h-[200px] md:h-[500px] object-cover"
               src={image.src}
               alt={`slide ${image.id}`}
             />
