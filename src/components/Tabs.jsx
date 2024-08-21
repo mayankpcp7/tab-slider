@@ -37,7 +37,7 @@ const Tabs = () => {
               currentTab === tab.id ? "opacity-100" : "opacity-0 absolute"
             }`}
           >
-            <p className="p-4 bg-white shadow-md rounded-lg">{tab.content}</p>
+          <img className="w-full max-w-[400px] h-[300px] object-cover" src={tab.content} alt="tabs" />
           </div>
         ))}
       </div>

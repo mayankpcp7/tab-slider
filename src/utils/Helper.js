@@ -6,8 +6,6 @@ import slide3 from "../assets/images/webp/slide-3.webp";
 import slide4 from "../assets/images/webp/slide-4.webp";
 import slide5 from "../assets/images/webp/slide-5.webp";
 
-
-
 export const IMAGE_DATA = [
   { id: 1, src: slide1 },
   { id: 2, src: slide2 },
@@ -25,7 +23,7 @@ export const TAB_IMAGES = [
 ];
 
 export const TABS = [
-  { id: "tab1", label: "Tab 1", content: "This is the content for Tab 1." },
-  { id: "tab2", label: "Tab 2", content: "This is the content for Tab 2." },
-  { id: "tab3", label: "Tab 3", content: "This is the content for Tab 3." },
+  { id: "tab1", label: "Tab 1", content: slide4 },
+  { id: "tab2", label: "Tab 2", content: slide2 },
+  { id: "tab3", label: "Tab 3", content: slide1 },
 ];
