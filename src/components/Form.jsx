@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
 
 const Forms = () => {
   const [input, setInput] = useState({
@@ -17,14 +18,29 @@ const Forms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
-    setShowPopup(true); // Show the popup
-    setInput({
-      name: "",
-      email: "",
-      age: "",
-      password: "",
-    });
+    console.log("Form input:", input);
+
+    const serviceID = "service_pmlubob";
+    const templateID = "template_g3wpjai";
+    const userID = "31uSRytfoc-6ujAhw";
+
+    // Send data to EmailJS
+    emailjs
+      .send(serviceID, templateID, input, userID)
+      .then((response) => {
+        console.log("Email sent successfully:", response);
+        setShowPopup(true);
+        setInput({
+          name: "",
+          email: "",
+          age: "",
+          password: "",
+        });
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        alert("Failed to send email. Please try again later.");
+      });
   };
 
   const closePopup = () => {
@@ -38,7 +54,6 @@ const Forms = () => {
       document.body.style.overflow = "";
     }
 
-    // Cleanup on unmount or when `showPopup` changes
     return () => {
       document.body.style.overflow = "";
     };
